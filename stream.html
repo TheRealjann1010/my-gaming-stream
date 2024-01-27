@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Gaming Stream</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #FF0000;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            padding: 20px;
+            background-color: #000;
+            color: #FF0000;
+            font-size: 24px;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            padding: 10px;
+            background-color: #000;
+            color: #FF0000;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        #stream-container {
+            width: 0;
+            height: 0;
+            /* Add styling for the streaming container */
+        }
+        #play-button {
+            background-color: #FF0000;
+            color: #000;
+            font-size: 16px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Gaming Stream</h1>
+    </header>
+    <section>
+        <div id="stream-container"></div>
+    </section>
+    <footer>
+        <button id="play-button" onclick="playMusic()">Play Background Music</button>
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script>
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('stream-container', {
+                    height: '0',
+                    width: '0',
+                    videoId: '-fGBWS473NI',
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+            }
+
+            function onPlayerReady(event) {
+                document.getElementById('play-button').style.display = 'block';
+            }
+
+            function playMusic() {
+                player.playVideo();
+                document.getElementById('play-button').style.display = 'none';
+            }
+        </script>
+        <p>© 2024 Your Gaming Stream. All rights reserved.</p>
+    </footer>
+</body>
+</html>
